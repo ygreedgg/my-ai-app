@@ -1,9 +1,22 @@
 import streamlit as st
+import google.generativeai as genai
 
-st.title("My AI Video Tool")
-st.write("ကျွန်တော့်ရဲ့ AI ဝက်ဆိုက်လေး ဖြစ်ပါတယ်!")
+genai.configure(api_key="AQ.Ab8RN6IrOA2CEt6iFVGrYOlqpVbTsH4xFTEjKvvrPi0NkV0P0w") 
 
-user_input = st.text_input("ဘာလုပ်ပေးရမလဲ?")
-if st.button("စတင်မယ်"):
-    st.write(f"သင်ပြောတာ: {user_input}")
-  
+st.title("🎬 AI Video Recap Tool")
+
+video_url = st.text_input("YouTube ဗီဒီယို လင့်ခ်ကို ထည့်ပါ:")
+duration = st.slider("လိုချင်တဲ့ ဗီဒီယိုအရှည် (မိနစ်)", 1, 10, 5)
+
+if st.button("Start"):
+    if video_url:
+        st.write(f"ဗီဒီယိုကို လေ့လာနေပါပြီ... (Duration: {duration} min)")
+        
+        # Gemini AI ကို မေးခွန်းထုတ်ခြင်း
+        model = genai.GenerativeModel('gemini-pro')
+        response = model.generate_content(f"Summarize this video for me in {duration} minutes: {video_url}")
+        
+        st.subheader("AI ရဲ့ အနှစ်ချုပ်")
+        st.write(response.text)
+    else:
+        st.error("ကျေးဇူးပြု၍ လင့်ခ်တစ်ခု ထည့်ပေးပါ။")
