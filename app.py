@@ -13,7 +13,7 @@ if st.button("Start"):
         st.write(f"ဗီဒီယိုကို လေ့လာနေပါပြီ... (Duration: {duration} min)")
         
         # Gemini AI ကို မေးခွန်းထုတ်ခြင်း
-        model = genai.GenerativeModel('gemini-pro')
+        model = genai.GenerativeModel('gemini-1.5-flash')
         response = model.generate_content(f"Summarize this video for me in {duration} minutes: {video_url}")
         
         st.subheader("AI ရဲ့ အနှစ်ချုပ်")
