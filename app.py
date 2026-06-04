@@ -1,7 +1,7 @@
 import streamlit as st
 import google.generativeai as genai
 
-genai.configure(api_key="AQ.Ab8RN6Je8GInPyiAMAhH_3_HeHIWP7dXnOgpFMNezmw-_7eRTQ") 
+genai.configure(api_key="AQ.Ab8RN6LU0IXQcLpjMu26Lw3-bE9G3RxVktDc8lJKVtPIq75mPg") 
 
 st.title("🎬 AI Video Recap Tool")
 
